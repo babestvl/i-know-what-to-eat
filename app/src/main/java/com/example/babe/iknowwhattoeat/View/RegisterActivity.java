@@ -1,4 +1,4 @@
-package com.example.babe.iknowwhattoeat;
+package com.example.babe.iknowwhattoeat.View;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -18,7 +18,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+public class RegisterActivity extends AppCompatActivity implements View.OnClickListener {
 
     private Button registerButton;
     private EditText editTextEmail;
@@ -76,7 +76,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     finish();
                     startActivity(new Intent(getApplicationContext(), ProfileActivity.class));
                 } else {
-                    Toast.makeText(MainActivity.this, "Could not register, please try again", Toast.LENGTH_LONG).show();
+                    Toast.makeText(RegisterActivity.this, "Could not register, please try again", Toast.LENGTH_LONG).show();
                 }
                 progressDialog.dismiss();
             }

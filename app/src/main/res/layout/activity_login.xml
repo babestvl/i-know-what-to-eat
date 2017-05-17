@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:paddingTop="50dp"
-    tools:context="com.example.babe.iknowwhattoeat.LoginActivity">
+    tools:context="com.example.babe.iknowwhattoeat.View.LoginActivity">
 
     <TextView
         android:textAlignment="center"

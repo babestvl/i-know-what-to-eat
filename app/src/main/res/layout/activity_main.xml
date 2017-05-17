@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:paddingTop="50dp"
-    tools:context="com.example.babe.iknowwhattoeat.MainActivity">
+    tools:context="com.example.babe.iknowwhattoeat.View.RegisterActivity">
 
     <TextView
         android:textAlignment="center"
