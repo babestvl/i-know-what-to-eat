@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">IKnowWhatToEat</string>
+    <string name="passwordText">Password</string>
+    <string name="emailText">Email</string>
+    <string name="login_here">Login here</string>
+    <string name="submit">Submit</string>
+    <string name="registerText">Registration</string>
+    <string name="signInText">Already Registered? Sign in here</string>
+</resources>

@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "321962040090",
+    "firebase_url": "https://iknowwhattoeat-b1bce.firebaseio.com",
+    "project_id": "iknowwhattoeat-b1bce",
+    "storage_bucket": "iknowwhattoeat-b1bce.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:321962040090:android:1b59b1e75f8ef16f",
+        "android_client_info": {
+          "package_name": "com.example.babe.iknowwhattoeat"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "321962040090-3g004v773j8ps9fdc09qhklsrisfjuro.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.babe.iknowwhattoeat",
+            "certificate_hash": "bd54027fc7b98231127e96cb40d469d8218969c4"
+          }
+        },
+        {
+          "client_id": "321962040090-svhk78hci3em3vrojdulhu2pbv78aaco.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDms6kqLbb-SdrBL2zc3Oi6OV0VUPeI1Go"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "321962040090-svhk78hci3em3vrojdulhu2pbv78aaco.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
