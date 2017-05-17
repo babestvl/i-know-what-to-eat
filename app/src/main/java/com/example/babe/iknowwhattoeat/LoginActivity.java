@@ -1,5 +1,6 @@
 package com.example.babe.iknowwhattoeat;
 
+import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.support.annotation.NonNull;
@@ -12,25 +13,25 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.babe.iknowwhattoeat.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private Button registerButton;
+    private Button loginButton;
     private EditText editTextEmail;
     private EditText editTextPassword;
-    private TextView textViewSignin;
-    private ProgressDialog progressDialog;
+    private TextView textViewSignup;
+
     private FirebaseAuth firebaseAuth;
+    private ProgressDialog progressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_login);
 
         progressDialog = new ProgressDialog(this);
 
@@ -41,17 +42,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             startActivity(new Intent(getApplicationContext(), ProfileActivity.class));
         }
 
-        registerButton = (Button) findViewById(R.id.registerButton);
+        loginButton = (Button) findViewById(R.id.loginButton);
         editTextEmail = (EditText) findViewById(R.id.email);
         editTextPassword = (EditText) findViewById(R.id.password);
-        textViewSignin = (TextView) findViewById(R.id.textViewSignin);
+        textViewSignup = (TextView) findViewById(R.id.textViewSignup);
 
-        registerButton.setOnClickListener(this);
-        textViewSignin.setOnClickListener(this);
-
+        loginButton.setOnClickListener(this);
+        textViewSignup.setOnClickListener(this);
     }
 
-    private void registerUser() {
+    private void userLogin() {
         String email = editTextEmail.getText().toString().trim();
         String password = editTextPassword.getText().toString().trim();
 
@@ -65,10 +65,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             return;
         }
 
-        progressDialog.setMessage("Registering User...");
+        progressDialog.setMessage("Login User...");
         progressDialog.show();
 
-        firebaseAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+        firebaseAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 progressDialog.dismiss();
@@ -76,21 +76,22 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     finish();
                     startActivity(new Intent(getApplicationContext(), ProfileActivity.class));
                 } else {
-                    Toast.makeText(MainActivity.this, "Could not register, please try again", Toast.LENGTH_LONG).show();
+                    Toast.makeText(LoginActivity.this, "Could not login don't have an account or wrong email/password", Toast.LENGTH_LONG).show();
                 }
-                progressDialog.dismiss();
             }
         });
     }
 
     @Override
     public void onClick(View v) {
-        if(v == registerButton) {
-            registerUser();
+        if(v == loginButton) {
+            userLogin();
         }
 
-        if(v == textViewSignin) {
-            startActivity(new Intent(this, LoginActivity.class));
+        if(v == textViewSignup) {
+            startActivity(new Intent(this, MainActivity.class));
         }
     }
+
+
 }
