@@ -1,4 +1,4 @@
-package com.example.babe.iknowwhattoeat.View;
+package com.example.babe.iknowwhattoeat.login;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -13,45 +13,45 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.babe.iknowwhattoeat.R;
+import com.example.babe.iknowwhattoeat.data.User;
+import com.example.babe.iknowwhattoeat.profile.ProfileActivity;
+import com.example.babe.iknowwhattoeat.random.RandomActivity;
+import com.example.babe.iknowwhattoeat.register.RegisterActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
-import com.google.firebase.auth.FirebaseAuth;
 
-public class RegisterActivity extends AppCompatActivity implements View.OnClickListener {
+public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private Button registerButton;
+    private Button loginButton;
     private EditText editTextEmail;
     private EditText editTextPassword;
-    private TextView textViewSignin;
+    private TextView textViewSignup;
+    private User user;
     private ProgressDialog progressDialog;
-    private FirebaseAuth firebaseAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-
+        setContentView(R.layout.activity_login);
         progressDialog = new ProgressDialog(this);
+        user = User.getInstance();
 
-        firebaseAuth = FirebaseAuth.getInstance();
-
-        if(firebaseAuth.getCurrentUser() != null) {
+        if(user.getUser() != null) {
             finish();
-            startActivity(new Intent(getApplicationContext(), ProfileActivity.class));
+            startActivity(new Intent(getApplicationContext(), RandomActivity.class));
         }
 
-        registerButton = (Button) findViewById(R.id.registerButton);
+        loginButton = (Button) findViewById(R.id.loginButton);
         editTextEmail = (EditText) findViewById(R.id.email);
         editTextPassword = (EditText) findViewById(R.id.password);
-        textViewSignin = (TextView) findViewById(R.id.textViewSignin);
+        textViewSignup = (TextView) findViewById(R.id.textViewSignup);
 
-        registerButton.setOnClickListener(this);
-        textViewSignin.setOnClickListener(this);
-
+        loginButton.setOnClickListener(this);
+        textViewSignup.setOnClickListener(this);
     }
 
-    private void registerUser() {
+    public void userLogin() {
         String email = editTextEmail.getText().toString().trim();
         String password = editTextPassword.getText().toString().trim();
 
@@ -65,32 +65,33 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
             return;
         }
 
-        progressDialog.setMessage("Registering User...");
+        progressDialog.setMessage("Login User...");
         progressDialog.show();
 
-        firebaseAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+        user.getFirebaseAuth().signInWithEmailAndPassword(email, password).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 progressDialog.dismiss();
                 if(task.isSuccessful()) {
                     finish();
-                    startActivity(new Intent(getApplicationContext(), ProfileActivity.class));
+                    startActivity(new Intent(getApplicationContext(), RandomActivity.class));
                 } else {
-                    Toast.makeText(RegisterActivity.this, "Could not register, please try again", Toast.LENGTH_LONG).show();
+                    Toast.makeText(LoginActivity.this, "Could not login don't have an account or wrong email/password", Toast.LENGTH_LONG).show();
                 }
-                progressDialog.dismiss();
             }
         });
     }
 
     @Override
     public void onClick(View v) {
-        if(v == registerButton) {
-            registerUser();
+        if(v == loginButton) {
+            userLogin();
         }
 
-        if(v == textViewSignin) {
-            startActivity(new Intent(this, LoginActivity.class));
+        if(v == textViewSignup) {
+            startActivity(new Intent(this, RegisterActivity.class));
         }
     }
+
+
 }
