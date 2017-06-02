@@ -13,6 +13,10 @@ public class Food {
         this.price = price;
     }
 
+    public Food() {
+
+    }
+
     public String getName() {
         return name;
     }

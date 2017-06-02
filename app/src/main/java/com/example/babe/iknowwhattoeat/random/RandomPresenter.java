@@ -7,7 +7,6 @@ import com.example.babe.iknowwhattoeat.data.User;
 
 public class RandomPresenter {
     private RandomView view;
-    private LocalFoodDatabase localFoodDatabase;
     private OnlineFoodDatabase database;
     private User user;
 

@@ -38,7 +38,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         user = User.getInstance();
         progressDialog = new ProgressDialog(this);
 
-        if(user.getUser() != null) {
+        if(user.getFirebaseAuth().getCurrentUser() != null) {
             finish();
             startActivity(new Intent(getApplicationContext(), RandomActivity.class));
         }

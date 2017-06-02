@@ -29,7 +29,7 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
         setContentView(R.layout.activity_profile);
         user = User.getInstance();
 
-        if(user.getUser() == null) {
+        if(user.getFirebaseAuth().getCurrentUser() == null) {
             finish();
             startActivity(new Intent(this, LoginActivity.class));
         }
@@ -39,7 +39,7 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
         welcomeText = (TextView) findViewById(R.id.welcomeText);
 
         buttonLogout.setOnClickListener(this);
-        welcomeText.setText("Welcome " + user.getEmail());
+        welcomeText.setText("Welcome " + user.getFirebaseAuth().getCurrentUser().getEmail());
     }
 
     @Override

@@ -37,7 +37,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         progressDialog = new ProgressDialog(this);
         user = User.getInstance();
 
-        if(user.getUser() != null) {
+        if(user.getFirebaseAuth().getCurrentUser() != null) {
             finish();
             startActivity(new Intent(getApplicationContext(), RandomActivity.class));
         }
