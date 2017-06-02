@@ -23,7 +23,8 @@
         <activity android:name=".category.CategoryActivity" />
         <activity android:name=".random.RandomActivity" />
         <activity android:name=".add.AddActivity" />
-        <activity android:name=".recent.RecentActivity"></activity>
+        <activity android:name=".recent.RecentActivity" />
+        <activity android:name=".show.FoodActivity"></activity>
     </application>
 
 </manifest>
