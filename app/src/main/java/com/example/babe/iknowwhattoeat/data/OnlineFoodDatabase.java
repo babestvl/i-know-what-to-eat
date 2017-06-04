@@ -28,6 +28,7 @@ public class OnlineFoodDatabase {
         reference.child("food").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
+                foodList.clear();
                 Iterable<DataSnapshot> children = dataSnapshot.getChildren();
                 for(DataSnapshot child : children) {
                     foodList.add(child.getValue(Food.class));

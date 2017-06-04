@@ -6,14 +6,14 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:paddingTop="50dp"
-    tools:context="com.example.babe.iknowwhattoeat.ProfileActivity">
+    tools:context="com.example.babe.iknowwhattoeat.profile.ProfileActivity">
 
     <TextView
         android:id="@+id/welcomeText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="15dp"
-        android:text="@string/loginText"
+        android:text="Welcome"
         android:textAlignment="center"
         android:textSize="32sp" />
 

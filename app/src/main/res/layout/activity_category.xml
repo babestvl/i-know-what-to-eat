@@ -8,11 +8,11 @@
     tools:context="com.example.babe.iknowwhattoeat.category.CategoryActivity">
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="554dp">
         <ListView
             android:id="@+id/allList"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="557dp"/>
     </LinearLayout>
     <RelativeLayout
         android:layout_width="match_parent"
